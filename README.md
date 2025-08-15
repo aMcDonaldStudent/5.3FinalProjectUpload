@@ -1,4 +1,6 @@
-# This auto-runs with Apache and MySQL (which controls the credentials for the login system) online, no need to write in the console
+# This project is essentially a PHP + Apache + MySQL Login System with MVC architecture.
+
+# This auto-runs with Apache and MySQL (Xampp control recommended) (which controls the credentials for the login system) online, no need to write in the console
 
 # This program is essentially a PHP login website with various features
 # based on whether a user is logged in as a technician or an Admin
