@@ -1,70 +1,91 @@
-# Getting Started with Create React App
+# This auto-runs with Apache and MySQL (which controls the credentials for the login system) online, no need to write in the console
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# This program is essentially a PHP login website with various features
+# based on whether a user is logged in as a technician or an Admin
 
-## Available Scripts
+# This project is very old and has been left for the newer Showcase website
+that I created but is slowly being patched up when I have time for it. 
+# It is primarily here to demonstrate background with tools, languages and concepts such as:
+- MySQL
+- Apache
+- PHP.
+- MVC Architecture
 
-In the project directory, you can run:
+# To create the MySQL architecture for this, run this to generate the credential tables:
+///////////////////////////////////////////////////////////////////////////////
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Aug 15, 2025 at 10:22 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
-### `npm start`
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-### `npm test`
+--
+-- Database: `sdc342_wk5final`
+--
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-- --------------------------------------------------------
 
-### `npm run build`
+--
+-- Table structure for table `users`
+--
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+CREATE TABLE `users` (
+  `UserNo` int(11) NOT NULL,
+  `UserId` varchar(12) NOT NULL,
+  `Password` varchar(20) NOT NULL,
+  `FirstName` varchar(50) NOT NULL,
+  `LastName` varchar(50) NOT NULL,
+  `HireDate` date NOT NULL,
+  `EMail` varchar(50) NOT NULL,
+  `Extension` int(5) NOT NULL,
+  `UserLevelNo` int(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+--
+-- Dumping data for table `users`
+--
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+INSERT INTO `users` (`UserNo`, `UserId`, `Password`, `FirstName`, `LastName`, `HireDate`, `EMail`, `Extension`, `UserLevelNo`) VALUES
+(1, 'LS11775', 'Pw1$', 'Sybil', 'Ludington', '1761-04-05', 'rode2@revere.com', 11775, 2),
+(2, 'LR01010', 'Pw1$', 'Rasmus', 'Lerdorf', '1968-11-22', 'creator@php.com', 1010, 1),
+(3, 'JP28426', 'Pw1$', 'Percy', 'Julian', '1899-04-11', 'pj@nas.org', 28426, 2),
+(4, 'BR21212', 'Pw1$', 'Roy G.', 'Biv', '1899-04-11', 'rainbow@colors.org', 21212, 2),
+(5, 'WE11919', 'Pw1$', 'Edith', 'Wilson', '1872-10-15', 'temp_pres@whitehouse.gov', 11918, 1);
 
-### `npm run eject`
+--
+-- Indexes for dumped tables
+--
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`UserNo`);
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+--
+-- AUTO_INCREMENT for dumped tables
+--
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `UserNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
